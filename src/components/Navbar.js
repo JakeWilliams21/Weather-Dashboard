@@ -2,15 +2,18 @@ import React, { useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import $ from 'jquery'
 
-const Navbar = () => {
+const Navbar = ({onButtonClick}) => {
     const [temp, setTemp] = useState(false)
+    const [location, setLocation] = useState('')
 
-    const handleChange = () => {
-
+    const handleChange = (e) => {
+        setLocation(e.target.value)
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        const cleanLocation = location.split(', ')
+        onButtonClick(location);
     }
 
     const tempChange = (e) => {
