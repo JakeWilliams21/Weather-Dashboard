@@ -1,0 +1,144 @@
+.App {
+  font-family: 'Lato', sans-serif;
+}
+
+.navbar {
+  max-width: 100%;
+  gap: 24px;
+  padding: 24px 48px;
+  justify-content: center;
+}
+
+.logo {
+  font-size: xx-large;
+  font-weight: bold;
+  color: #283B45;
+  cursor: default;
+}
+
+.searchbar {
+  width: 100%;
+  gap: 24px;
+  justify-content: center;
+}
+
+.search-icon {
+  color: #283B45;
+}
+
+.location-form {
+  background-color: #CAD1CA;
+  width: 90%;
+  padding: 4px;
+  justify-content: space-between;
+}
+
+.location-form input {
+  border: none;
+  background-color: transparent;
+  width: 500px;
+}
+
+.location-form button {
+  border: none;
+  background-color: #283B45;
+  color: #CAD1CA;
+  padding: 2px 8px;
+  margin-right: 8px;
+}
+
+.location-form button:hover {
+  background-color: #3c5868;
+  cursor: pointer;
+}
+
+.location-form input:focus {
+  outline: none;
+}
+
+.measurements>* {
+  background-color: #CAD1CA;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: small;
+}
+
+.measurements>*:hover {
+  cursor: pointer;
+}
+
+.selected {
+  background-color: #283B45;
+  color: #CAD1CA;
+}
+
+.flex-row {
+  display: flex;
+  align-items: center;
+}
+
+/* Snapshot */
+
+.snapshot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.location-name {
+  font-size: 48px;
+  color: #283B45;
+}
+
+.snap-top {
+  gap: 48px;
+}
+
+.precip {
+  gap: 6px;
+  color: #283B45;
+  font-weight: bold;
+}
+
+img {
+  filter: invert(18%) sepia(43%) saturate(409%) hue-rotate(156deg) brightness(93%) contrast(89%);
+}
+
+.high {
+  color: #a31c2c
+}
+
+.low {
+  color: #5e7f92;
+}
+
+.temps {
+  gap: 128px;
+  font-size: xx-large;
+  color: #283B45;
+  font-weight: bold;
+}
+
+.forecast {
+  margin-top: 48px;
+  gap: 24px;
+  flex-wrap: 1;
+}
+
+/* Weather Card */
+
+.weather-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  background-color: #CAD1CA;
+  padding: 12px;
+}
+
+
