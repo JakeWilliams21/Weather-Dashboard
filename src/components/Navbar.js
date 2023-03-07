@@ -38,7 +38,7 @@ const Navbar = ({onButtonClick, onUnitClick}) => {
                 <SearchIcon className = 'search-icon'/>
                 <input type = 'text' name = 'location' placeholder = 'Search location' onChange = {handleChange}/>
             </div>
-            <button type = 'submit' onClick = {handleSubmit}>Find my location</button>
+            <button type = 'submit' onClick = {handleSubmit}>Find</button>
         </form>
         <div className = 'measurements flex-row'>
             <div id = 'far' className = 'farenheight selected' onClick = {tempChange}>F°</div>

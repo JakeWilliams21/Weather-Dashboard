@@ -23,7 +23,7 @@ function App() {
   useEffect(() => {
 
     if (lat && lon) {
-      axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=7&units=${unit ? 'metric' : 'imperial'}&appid=${process.env.REACT_APP_WEATHER_KEY}`).then((res) => {
+      axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=8&units=${unit ? 'metric' : 'imperial'}&appid=${process.env.REACT_APP_WEATHER_KEY}`).then((res) => {
       setForecast(res.data.list)
       console.log(res.data.list);
     })
@@ -87,7 +87,7 @@ function App() {
           <span className = 'current'>{lat ? `${current.current}°` : ''}</span>
           <span className = 'high'>{lat ? `${current.high}°` : ''}</span>
         </div>
-        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '24px'}}>
+        <div className = 'ul-container'>
           <ul className = 'forecast flex-row'>
             {forecast && forecast.map((weather, index) => (
               <li>
