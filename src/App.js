@@ -50,7 +50,7 @@ function App() {
 
   const handleButtonClick = (location) => {
     setLocation(location)
-    axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=${process.env.REACT_APP_WEATHER_KEY}`).then((res) => {
+    axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=${process.env.REACT_APP_WEATHER_KEY}`).then((res) => {
       console.log(res.data);
       setLat(res.data[0].lat)
       setLon(res.data[0].lon)
