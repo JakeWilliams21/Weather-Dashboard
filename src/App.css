@@ -194,7 +194,7 @@
   }
 
   .location-form input {
-    width: 100px;
+    width: 300px;
   }
 
   .logo {
@@ -247,6 +247,10 @@
 
   .forecast {
     gap: 12px;
+  }
+
+  .location-form input {
+    width: 100px;
   }
 }
 
