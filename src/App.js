@@ -83,9 +83,9 @@ function App() {
           {lat ? <img src = {`https://openweathermap.org/img/wn/${current.icon}@2x.png`} className = 'weather-type' alt = 'sunny'/> : <span></span>}
         </div>
         <div className = 'temps flex-row'>
-          <span className = 'low'>{lat ? current.low : ''}</span>
-          <span className = 'current'>{lat ? current.current : ''}</span>
-          <span className = 'high'>{lat ? current.high : ''}</span>
+          <span className = 'low'>{lat ? `${current.low}°` : ''}</span>
+          <span className = 'current'>{lat ? `${current.current}°` : ''}</span>
+          <span className = 'high'>{lat ? `${current.high}°` : ''}</span>
         </div>
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '24px'}}>
           <ul className = 'forecast flex-row'>

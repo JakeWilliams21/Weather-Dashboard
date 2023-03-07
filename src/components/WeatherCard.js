@@ -6,7 +6,7 @@ const WeatherCard = (props) => {
         <span>{props.time}</span>
         <img src = {`https://openweathermap.org/img/wn/${props.icon}@2x.png`} alt = 'sunny'/>
         <div>
-            <span>{props.temp}</span>
+            <span>{props.temp}°</span>
         </div>
         <div className = 'precip flex-row'>
             <span>{props.desc}</span>
