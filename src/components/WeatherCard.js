@@ -1,6 +1,4 @@
 import React from 'react'
-import sun from '../images/icons8-sun.svg'
-import drop from '../images/drop.svg'
 
 const WeatherCard = (props) => {
   return (
@@ -11,8 +9,7 @@ const WeatherCard = (props) => {
             <span>{props.temp}</span>
         </div>
         <div className = 'precip flex-row'>
-            <img src ={drop} alt = 'precipitation'/>
-            <spa>{props.rain}%</spa>
+            <span>{props.desc}</span>
           </div>
         </div>
   )

@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import $ from 'jquery'
 
-const Navbar = ({onButtonClick}) => {
-    const [temp, setTemp] = useState(false)
+const Navbar = ({onButtonClick, onUnitClick}) => {
     const [location, setLocation] = useState('')
 
     const handleChange = (e) => {
@@ -12,7 +11,6 @@ const Navbar = ({onButtonClick}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const cleanLocation = location.split(', ')
         onButtonClick(location);
     }
 
@@ -21,11 +19,11 @@ const Navbar = ({onButtonClick}) => {
         let cel = $('#cel')
         
         if (e.target.id === 'far') {
-            setTemp(false)
+            onUnitClick(false)
             far.addClass('selected')
             cel.removeClass('selected')
         } else {
-            setTemp(true)
+            onUnitClick(true)
             far.removeClass('selected')
             cel.addClass('selected')
         }

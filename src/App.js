@@ -1,7 +1,5 @@
 import './App.css';
 import Navbar from './components/Navbar';
-import sun from './images/icons8-sun.svg'
-import drop from './images/drop.svg'
 import WeatherCard from './components/WeatherCard';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -25,24 +23,30 @@ function App() {
   useEffect(() => {
 
     if (lat && lon) {
-      axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${process.env.REACT_APP_WEATHER_KEY}`).then((res) => {
-        setCurrent({
-          current: Math.round(res.data.main.temp),
-          high: Math.round(res.data.main.temp_max),
-          low: Math.round(res.data.main.temp_min),
-          type: res.data.weather[0].main,
-          icon: res.data.weather[0].icon
-        })
-      })
+      axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=7&units=${unit ? 'metric' : 'imperial'}&appid=${process.env.REACT_APP_WEATHER_KEY}`).then((res) => {
+      setForecast(res.data.list)
+      console.log(res.data.list);
+    })
 
-      axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=7&units=imperial&appid=${process.env.REACT_APP_WEATHER_KEY}`).then((res) => {
-        setForecast(res.data.list)
-        console.log(res.data.list);
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit ? 'metric' : 'imperial'}&appid=${process.env.REACT_APP_WEATHER_KEY}`).then((res) => {
+      setCurrent({
+        current: Math.round(res.data.main.temp),
+        high: Math.round(res.data.main.temp_max),
+        low: Math.round(res.data.main.temp_min),
+        type: res.data.weather[0].main,
+        icon: res.data.weather[0].icon,
+        desc: res.data.weather[0].description
       })
+    })
     }
 
     
-  }, [lat, lon])
+  }, [lat, lon, unit,])
+
+  const unitToggle = (param) => {
+    setUnit(param)
+    console.log(unit);
+  }
 
   const handleButtonClick = (location) => {
     setLocation(location)
@@ -69,15 +73,11 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar onButtonClick = {(location) => handleButtonClick(location)}/>
+      <Navbar onButtonClick = {(location) => handleButtonClick(location)} onUnitClick={(param) => unitToggle(param)}/>
       <div className = 'snapshot'>
         <span className = 'location-name'>{location}</span>
         <div className = 'snap-top flex-row'>
           {location ? <img src = {`https://openweathermap.org/img/wn/${current.icon}@2x.png`} className = 'weather-type' alt = 'sunny'/> : <span>-</span>}
-          <div className = 'precip flex-row'>
-            <img src ={drop} alt = 'precipitation'/>
-            <spa>0%</spa>
-          </div>
         </div>
         <div className = 'temps flex-row'>
           <span className = 'low'>{location ? current.low : '-'}</span>
@@ -88,7 +88,7 @@ function App() {
           <ul className = 'forecast flex-row'>
             {forecast && forecast.map((weather, index) => (
               <li>
-                <WeatherCard key = {index} time = {convertDate(weather.dt)} temp = {Math.round(weather.main.temp)} icon = {weather.weather[0].icon}/>
+                <WeatherCard key = {index} time = {convertDate(weather.dt)} temp = {Math.round(weather.main.temp)} icon = {weather.weather[0].icon} desc = {weather.weather[0].description}/>
               </li>
             ))}
           </ul>
