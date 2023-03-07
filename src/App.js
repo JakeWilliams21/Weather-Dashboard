@@ -54,6 +54,9 @@ function App() {
       console.log(res.data);
       setLat(res.data[0].lat)
       setLon(res.data[0].lon)
+    }).catch((err) => {
+      console.log(err);
+      setLocation('Too Many Requests, Try Again Later')
     })
 
     $('.snapshot').removeClass('fade-in-three')
@@ -75,14 +78,14 @@ function App() {
     <div className="App">
       <Navbar onButtonClick = {(location) => handleButtonClick(location)} onUnitClick={(param) => unitToggle(param)}/>
       <div className = 'snapshot'>
-        <span className = 'location-name'>{location}</span>
+        <span className = 'location-name'>{location ? location : 'Please enter your location.'}</span>
         <div className = 'snap-top flex-row'>
-          {location ? <img src = {`https://openweathermap.org/img/wn/${current.icon}@2x.png`} className = 'weather-type' alt = 'sunny'/> : <span>-</span>}
+          {lat ? <img src = {`https://openweathermap.org/img/wn/${current.icon}@2x.png`} className = 'weather-type' alt = 'sunny'/> : <span></span>}
         </div>
         <div className = 'temps flex-row'>
-          <span className = 'low'>{location ? current.low : '-'}</span>
-          <span className = 'current'>{location ? current.current : '-'}</span>
-          <span className = 'high'>{location ? current.high : '-'}</span>
+          <span className = 'low'>{lat ? current.low : ''}</span>
+          <span className = 'current'>{lat ? current.current : ''}</span>
+          <span className = 'high'>{lat ? current.high : ''}</span>
         </div>
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '24px'}}>
           <ul className = 'forecast flex-row'>
