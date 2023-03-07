@@ -5,6 +5,7 @@ import drop from './images/drop.svg'
 import WeatherCard from './components/WeatherCard';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import $ from 'jquery'
 
 function App() {
   const [current, setCurrent] = useState({
@@ -39,6 +40,8 @@ function App() {
         console.log(res.data.list);
       })
     }
+
+    
   }, [lat, lon])
 
   const handleButtonClick = (location) => {
@@ -49,6 +52,11 @@ function App() {
       setLon(res.data[0].lon)
     })
 
+    $('.snapshot').removeClass('fade-in-three')
+    $('.forecast').removeClass('fade-in-four')
+
+    $('.snapshot').addClass('fade-in-three')
+    $('.forecast').addClass('fade-in-four')
     
   }
 

@@ -9,17 +9,39 @@
   justify-content: center;
 }
 
+@keyframes come-down {
+  0% {
+    transform: translateY(-200%)
+  }
+
+  100% {
+    transform: translateY(0%)
+  }
+}
+
+@keyframes left {
+  0% {
+    transform: translateX(-200%)
+  }
+
+  100% {
+    transform: translateY(0%)
+  }
+}
+
 .logo {
   font-size: xx-large;
   font-weight: bold;
   color: #283B45;
   cursor: default;
+  animation: 1.5s left
 }
 
 .searchbar {
   width: 100%;
   gap: 24px;
   justify-content: center;
+  animation: come-down 1.5s
 }
 
 .search-icon {
@@ -138,6 +160,28 @@
   gap: 48px;
   background-color: #CAD1CA;
   padding: 12px;
+}
+
+.fade-in-three {
+  animation: fade-in 3s ease
+}
+
+.fade-in-four {
+  animation: fade-in 4s ease
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 
