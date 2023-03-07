@@ -25,7 +25,7 @@ function App() {
   useEffect(() => {
 
     if (lat && lon) {
-      axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=bb7b08e02944933f95323a0d2bd6a58f`).then((res) => {
+      axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${process.env.REACT_APP_WEATHER_KEY}`).then((res) => {
         setCurrent({
           current: Math.round(res.data.main.temp),
           high: Math.round(res.data.main.temp_max),
@@ -35,7 +35,7 @@ function App() {
         })
       })
 
-      axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=7&units=imperial&appid=bb7b08e02944933f95323a0d2bd6a58f`).then((res) => {
+      axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=7&units=imperial&appid=${process.env.REACT_APP_WEATHER_KEY}`).then((res) => {
         setForecast(res.data.list)
         console.log(res.data.list);
       })
@@ -46,7 +46,7 @@ function App() {
 
   const handleButtonClick = (location) => {
     setLocation(location)
-    axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=bb7b08e02944933f95323a0d2bd6a58f`).then((res) => {
+    axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=${process.env.REACT_APP_WEATHER_KEY}`).then((res) => {
       console.log(res.data);
       setLat(res.data[0].lat)
       setLon(res.data[0].lon)
