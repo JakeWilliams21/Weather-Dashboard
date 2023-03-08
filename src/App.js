@@ -51,7 +51,7 @@ function App() {
   const handleButtonClick = (location) => {
     const zipRegex = /^\d{5}$/ // regular expression to check if string contains only 5 digits
     if (zipRegex.test(location)) {
-      axios.get(`http://api.openweathermap.org/geo/1.0/zip?zip=${location},US&appid=${process.env.REACT_APP_WEATHER_KEY}`).then((res) => {
+      axios.get(`https://api.openweathermap.org/geo/1.0/zip?zip=${location},US&appid=${process.env.REACT_APP_WEATHER_KEY}`).then((res) => {
       setLat(res.data.lat)
       setLon(res.data.lon)
       setLocation(res.data.name)
