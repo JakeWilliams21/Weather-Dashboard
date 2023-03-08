@@ -49,15 +49,28 @@ function App() {
   }
 
   const handleButtonClick = (location) => {
-    setLocation(location)
-    axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=${process.env.REACT_APP_WEATHER_KEY}`).then((res) => {
-      console.log(res.data);
-      setLat(res.data[0].lat)
-      setLon(res.data[0].lon)
+    const zipRegex = /^\d{5}$/ // regular expression to check if string contains only 5 digits
+    if (zipRegex.test(location)) {
+      axios.get(`http://api.openweathermap.org/geo/1.0/zip?zip=${location},US&appid=${process.env.REACT_APP_WEATHER_KEY}`).then((res) => {
+      setLat(res.data.lat)
+      setLon(res.data.lon)
+      setLocation(res.data.name)
     }).catch((err) => {
       console.log(err);
       setLocation('Too Many Requests, Try Again Later')
     })
+    } else {
+      axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=${process.env.REACT_APP_WEATHER_KEY}`).then((res) => {
+      setLat(res.data[0].lat)
+      setLon(res.data[0].lon)
+      setLocation(res.data[0].name)
+      
+    }).catch((err) => {
+      console.log(err);
+      setLocation('Too Many Requests, Try Again Later')
+    })
+    }
+    
 
     $('.snapshot').removeClass('fade-in-three')
     $('.forecast').removeClass('fade-in-four')
